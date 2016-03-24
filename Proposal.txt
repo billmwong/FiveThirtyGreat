@@ -29,3 +29,9 @@ Goal Fit -- Bill:
 
 
 My goals seem to fit into this project very well.  One of our team goals is to make visualizations for the outputs of our model, which fits well into my personal goal of learning how to make interesting visuals that go beyond normal graphs.  My third goal to learn about a new data science algorithm could be used in this project because we will be using algorithms to parse through the data we have.  Even if we end up not using my new algorithm, I could learn about a new one in the context of our data.  In addition, we could implement our models in such a way that it knows how confident it is with certain outputs, as per my second learning goal.
+
+
+Goal Fit --James:
+
+
+Generally I think my goals fit pretty well. One of my goals was to work on interesting and dynamic visualizations, which is an important part of our final project and I think I will learn a lot in this spectrum. My first goal was coming up with an interesting story which I think can be applied to all of the projects. We have a lot of ideas for what we can do with this project so narrowing down on the important ideas will make my first goal interesting.  Even though we sketched out our MVP, we are still not sure if this will entail interesting results. Hopefully, we will be able to find an interesting story. I think I have to revise my third goal. It seems highly unlikely that we will be exploring any new machine learning algorithms. Most of the project works seems to be more data exploration and finding interesting patterns.
