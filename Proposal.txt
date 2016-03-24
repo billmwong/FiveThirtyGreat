@@ -1,0 +1,31 @@
+﻿Data Science
+Team FiveThirtyGreat Project Proposal
+
+
+* Team Members: James Jang, Bill Wong and Keenan Zucker
+* The idea we have for this project is that we want to present a basketball analytic tool to the coaches/trainers to help them improve the players and the team. There is a huge, growing market for analytics in the basketball world.  An MVP would be a model to analyze a player and present our results in visually-appealing graphs/infographics. The model will analyze more in-depth statistics such as drives, pull up jumpers and etc. We want to make all of the visualization succinct and easy to understand. Stretch goals include having our model integrated into a web app where any user could select a player and generate interactive graphics on our analysis of the player.  If we had time we could also expand our model to analyze entire teams and see what a team’s strengths and weaknesses are.  We could also look at specific possessions and analyze ball/player movement in possessions.
+* For this project we will primarily use the free statistics library API at stats.nba.com for our data. It does not seem like we will have any obstacles retrieving these data accessing this data since we found a site that walks through the python code to import the data and examples of working with it.
+* New skills we will have to learn for this project will be making API calls to gather data rather than have a huge dataset will all of our data beforehand. Also, we would like to learn new skills in more dynamic or interactive visualizations. We have been working with matplotlib and seaborn a fair amount, but want to branch out into different visualization methods, like an infographic or interactive tool
+* Timeline
+   * Week 1: Initial analysis on player performance and rough static visualizations
+   * Week 2: Explore play- analysis and improve visualizations to be dynamic
+   * Week 3: Explore team analysis and improve our player and play-analysis
+   * Week 4:  Finalize tools and graphics
+   * Week 5: Create the website / deliverable
+
+
+* Our biggest risk for this project is choosing what topic to focus on and being able to utilize the big data set that we have. Analyzing a player is a pretty broad statement. We honestly do not know what kind of analysis we will be doing and if the analysis we make will even be helpful. There are already some basketball analytics that have been done and we hope to find a somewhat novel or different way of analyzing players performance. Moreover, there are tons of basketball analytics sites and information out there. There is a risk that what we work on is already being done or not particularly useful in comparison to existing sources in the world. 
+
+
+
+
+Goal Fit -- Keenan:
+
+
+I feel like this project is aligned with my goals very well. My goal of working on new visualization methods is definitely reflected because I wanted to work on more interactive or applicable visualizations. My next goal of working on something new is relatively well met. This dataset will definitely be unique and different to what I have worked on in the past. I think the goals of this project are pretty different to projects in the past as well, since a sklearn type of model isn't necessarily the end game, whereas it was in most of the other projects. Finally, I think this project lends particularly well to my last goals of utilizing outside sources. Basketball is such a huge market that there are TONS of analytics companies, sources, and literature currently (although much of it isn't open source). I think I will be able to learn a lot from the vast sources out there, but it might be difficult to find ones that are directly helpful as far as code goes. 
+
+
+Goal Fit -- Bill:
+
+
+My goals seem to fit into this project very well.  One of our team goals is to make visualizations for the outputs of our model, which fits well into my personal goal of learning how to make interesting visuals that go beyond normal graphs.  My third goal to learn about a new data science algorithm could be used in this project because we will be using algorithms to parse through the data we have.  Even if we end up not using my new algorithm, I could learn about a new one in the context of our data.  In addition, we could implement our models in such a way that it knows how confident it is with certain outputs, as per my second learning goal.
