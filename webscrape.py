@@ -6,6 +6,8 @@ import urllib2,cookielib
 import pandas as pd
 import nba_py as nba
 from nba_py import player
+import sys
+
 
 def makeSoup(url):
 	hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
@@ -43,6 +45,9 @@ def makeDataframe(soup):
 
 def getPlayerId(name):
     name = name.split(' ')
+
+    # If returned with execption 400 bad request for url, you sometimes have to open the link in your browser then it will work. Weird bug.
+
     player = nba.player.get_player(name[0], name[1], just_id=True)
     return player
 
@@ -63,4 +68,5 @@ def getData(name):
 
 
 if __name__ == '__main__':
-	getData('draymond green')
+	getData('stephen curry')
+
