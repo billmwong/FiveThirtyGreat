@@ -39,7 +39,6 @@ def makeDataframe(soup):
 	player_data = [[td.getText() for td in data_rows[i].findAll('td')] for i in range(len(data_rows))]
 
 	df = pd.DataFrame(player_data, columns=column_headers)
-	print df.head()
 	return df
 
 
@@ -51,22 +50,21 @@ def getPlayerId(name):
     player = nba.player.get_player(name[0], name[1], just_id=True)
     return player
 
-def getURL(id):
+def getURL(id, season):
 
-	print 'ID: ', int(id)
 	id = str(int(id))
-	url ='http://nbasavant.com/ajax/getShotsByPlayer.php?hfST=&hfQ=&pid%5B%5D='+id+'&hfSZB=&hfSZA=&hfSZR=&ddlYear=2014&txtGameDateGT=&txtGameDateLT=&ddlGameTimeGT_min=&ddlGameTimeGT_sec=&ddlGameTimeLT_min=&ddlGameTimeLT_sec=&ddlShotClockGT=&ddlShotClockLT=&ddlDefDistanceGT=&ddlDefDistanceLT=&ddlDribblesGT=&ddlDribblesLT=&ddlTouchTimeGT=&ddlTouchTimeLT=&ddlShotDistanceGT=&ddlShotDistanceLT=&ddlTeamShooting=&ddlTeamDefense=&hfPT=&ddlGroupBy=player&ddlOrderBy=shots_made_desc&hfGT=0%7C&ddlShotMade=&ddlMin=0&player_id='+id+'&data=null&_=1459806001585'
+	url ='http://nbasavant.com/ajax/getShotsByPlayer.php?hfST=&hfQ=&pid%5B%5D='+id+'&hfSZB=&hfSZA=&hfSZR=&ddlYear='+season+'&txtGameDateGT=&txtGameDateLT=&ddlGameTimeGT_min=&ddlGameTimeGT_sec=&ddlGameTimeLT_min=&ddlGameTimeLT_sec=&ddlShotClockGT=&ddlShotClockLT=&ddlDefDistanceGT=&ddlDefDistanceLT=&ddlDribblesGT=&ddlDribblesLT=&ddlTouchTimeGT=&ddlTouchTimeLT=&ddlShotDistanceGT=&ddlShotDistanceLT=&ddlTeamShooting=&ddlTeamDefense=&hfPT=&ddlGroupBy=player&ddlOrderBy=shots_made_desc&hfGT=0%7C&ddlShotMade=&ddlMin=0&player_id='+id+'&data=null&_=1459806001585'
     
 	return url
 
-def getData(name):
+def getData(name, season):
 	id = getPlayerId(name)
-	url = getURL(id)
+	url = getURL(id, season)
 	soup = makeSoup(url)
 	df = makeDataframe(soup)
 	return df
 
 
 if __name__ == '__main__':
-	getData('stephen curry')
+	getData('stephen curry', '2014')
 
