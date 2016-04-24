@@ -39,7 +39,7 @@ def makeDataframe(soup):
 	player_data = [[td.getText() for td in data_rows[i].findAll('td')] for i in range(len(data_rows))]
 
 	df = pd.DataFrame(player_data, columns=column_headers)
-	return df
+	return df.drop(df.columns[-2:], axis=1)
 
 
 def getPlayerId(name):
