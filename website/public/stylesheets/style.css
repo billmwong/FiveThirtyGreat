@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  background-color: lightblue;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -12,11 +13,11 @@ a {
     width: 700px;
 }
 .overlay-text {
-    width: 200px;
-    height: 200px;
+    /*width: 200px;
+    height: 200px;*/
     position: absolute;
-    top: 50px;   /* chartArea top  */
-    left: 200px; /* chartArea left */
+    top: 0;   /* chartArea top  */
+    left: 500px; /* chartArea left */
 }
 .overlay-marker {
     width: 50px;
