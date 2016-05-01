@@ -65,8 +65,8 @@ function drawChart() {
 
       // Check every 100 ms what time step the chart is at and update the overlay text
       window.setInterval(function(){
-        var currentTime = JSON.parse(this.getState()).time;
-        currentTime = currentTime.slice(0,4);
+        var rawTime = JSON.parse(this.getState()).time;
+        var currentTime = rawTime.slice(0,4);
         $overlay.text("Time: "+currentTime);
       }.bind(this), 100);
     }
