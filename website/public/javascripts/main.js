@@ -1,3 +1,18 @@
+TEAM_DICT = {
+  'Ball':'Ball',
+  'Curry': 'GSW',
+  'Thompson': 'GSW',
+  'Bogut': 'GSW',
+  'Green': 'GSW',
+  'Barnes': 'GSW',
+  'James': 'CLE',
+  'Smith': 'CLE',
+  'Love': 'CLE',
+  'Irving': 'CLE',
+  'Mozgov': 'CLE',
+  'pos': 'Possession'
+};
+
 $overlay = $('.overlay-text');
 
 google.setOnLoadCallback(drawChart);
@@ -14,31 +29,41 @@ function drawChart() {
   data.addColumn('number', 'radius');
 
   // Load the json
-  $.getJSON("GSWvsCLE.json", function(rawData) {
+  $.getJSON("dump.json", function(rawData) {
     console.log(rawData);
     var chartData = [];
     // Make a dummy ball size so that google charts scales the rest of the sizes correctly
     chartData.push(['Ball', 100, 0, 0, 'Ball', 150]);
 
-    var firstEventMoments = rawData['events'][1]['moments'];
+    // var firstEventMoments = rawData['events'][1]['moments'];
     // Loop through each moment
-    for (var i=0;i<firstEventMoments.length;i++) {
+    // for (var i=0;i<rawData['ball'].length;i++) {
+    for (var i=0;i<2000;i++) {
       // Get the positions of every player
-      positionsArray = firstEventMoments[i][5];
+      // positionsArray = firstEventMoments[i][5];
 
       chartTime = i + 100;
+      
+      for (var player in rawData) {
+        // Make sure this key is not from prototype
+        if (rawData.hasOwnProperty(player)) {
+          chartData.push([player, chartTime, rawData[player][i][0], rawData[player][i][1], TEAM_DICT[player], 15]);
+        }
+      }
+      // console.log('added for chartTime',chartTime);
 
-      chartData.push(['Ball', chartTime, positionsArray[0][2], positionsArray[0][3], 'Ball', positionsArray[0][4]]);
-      chartData.push(['James', chartTime, positionsArray[1][2], positionsArray[1][3], 'CLE', 15]);
-      chartData.push(['Smith', chartTime, positionsArray[2][2], positionsArray[2][3], 'CLE', 15]);
-      chartData.push(['Love', chartTime, positionsArray[3][2], positionsArray[3][3], 'CLE', 15]);
-      chartData.push(['Irving', chartTime, positionsArray[4][2], positionsArray[4][3], 'CLE', 15]);
-      chartData.push(['Mozgov', chartTime, positionsArray[5][2], positionsArray[5][3], 'CLE', 15]);
-      chartData.push(['Bogut', chartTime, positionsArray[6][2], positionsArray[6][3], 'GSW', 15]);
-      chartData.push(['Curry', chartTime, positionsArray[7][2], positionsArray[7][3], 'GSW', 15]);
-      chartData.push(['Thompson', chartTime, positionsArray[8][2], positionsArray[8][3], 'GSW', 15]);
-      chartData.push(['Green', chartTime, positionsArray[9][2], positionsArray[9][3], 'GSW', 15]);
-      chartData.push(['Barnes', chartTime, positionsArray[10][2], positionsArray[10][3], 'GSW', 15]);
+
+      // chartData.push(['Ball', chartTime, positionsArray[0][2], positionsArray[0][3], 'Ball', positionsArray[0][4]]);
+      // chartData.push(['James', chartTime, positionsArray[1][2], positionsArray[1][3], 'CLE', 15]);
+      // chartData.push(['Smith', chartTime, positionsArray[2][2], positionsArray[2][3], 'CLE', 15]);
+      // chartData.push(['Love', chartTime, positionsArray[3][2], positionsArray[3][3], 'CLE', 15]);
+      // chartData.push(['Irving', chartTime, positionsArray[4][2], positionsArray[4][3], 'CLE', 15]);
+      // chartData.push(['Mozgov', chartTime, positionsArray[5][2], positionsArray[5][3], 'CLE', 15]);
+      // chartData.push(['Bogut', chartTime, positionsArray[6][2], positionsArray[6][3], 'GSW', 15]);
+      // chartData.push(['Curry', chartTime, positionsArray[7][2], positionsArray[7][3], 'GSW', 15]);
+      // chartData.push(['Thompson', chartTime, positionsArray[8][2], positionsArray[8][3], 'GSW', 15]);
+      // chartData.push(['Green', chartTime, positionsArray[9][2], positionsArray[9][3], 'GSW', 15]);
+      // chartData.push(['Barnes', chartTime, positionsArray[10][2], positionsArray[10][3], 'GSW', 15]);
     }
     data.addRows(chartData);
     var chart = new google.visualization.MotionChart(document.getElementById('chart_div'));
