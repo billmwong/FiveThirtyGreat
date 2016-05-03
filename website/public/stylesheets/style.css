@@ -18,6 +18,7 @@ a {
     position: absolute;
     top: 0;   /* chartArea top  */
     left: 500px; /* chartArea left */
+    font-size: 100px;
 }
 .court {
     width: 775px;
