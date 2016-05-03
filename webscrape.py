@@ -48,7 +48,7 @@ def getPlayerId(name):
     # If returned with execption 400 bad request for url, you sometimes have to open the link in your browser then it will work. Weird bug.
 
     player = nba.player.get_player(name[0], name[1], just_id=True)
-    return player
+    return player[0:1]
 
 def getURL(id, season):
 
