@@ -13,6 +13,9 @@ TEAM_DICT = {
   'pos': 'Possession'
 };
 
+var START = 2800;
+var END = 3800;
+
 $overlay = $('.overlay-text');
 
 google.setOnLoadCallback(drawChart);
@@ -33,12 +36,12 @@ function drawChart() {
     console.log(rawData);
     var chartData = [];
     // Make a dummy ball size so that google charts scales the rest of the sizes correctly
-    chartData.push(['Ball', 100, 0, 0, 'Ball', 150]);
+    chartData.push(['Ball', (START+100), 0, 0, 'Ball', 150]);
 
     // var firstEventMoments = rawData['events'][1]['moments'];
     // Loop through each moment
     // for (var i=0;i<rawData['Ball'].length;i++) {
-    for (var i=0;i<1000;i++) {
+    for (var i=START;i<END;i++) {
       chartTime = i + 100;
       
       // Loop through each player, push the data for each
