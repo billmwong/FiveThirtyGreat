@@ -37,8 +37,8 @@ function drawChart() {
 
     // var firstEventMoments = rawData['events'][1]['moments'];
     // Loop through each moment
-    // for (var i=0;i<rawData['ball'].length;i++) {
-    for (var i=0;i<2000;i++) {
+    // for (var i=0;i<rawData['Ball'].length;i++) {
+    for (var i=0;i<500;i++) {
       // Get the positions of every player
       // positionsArray = firstEventMoments[i][5];
 
@@ -50,27 +50,14 @@ function drawChart() {
           chartData.push([player, chartTime, rawData[player][i][0], rawData[player][i][1], TEAM_DICT[player], 15]);
         }
       }
-      // console.log('added for chartTime',chartTime);
-
-
-      // chartData.push(['Ball', chartTime, positionsArray[0][2], positionsArray[0][3], 'Ball', positionsArray[0][4]]);
-      // chartData.push(['James', chartTime, positionsArray[1][2], positionsArray[1][3], 'CLE', 15]);
-      // chartData.push(['Smith', chartTime, positionsArray[2][2], positionsArray[2][3], 'CLE', 15]);
-      // chartData.push(['Love', chartTime, positionsArray[3][2], positionsArray[3][3], 'CLE', 15]);
-      // chartData.push(['Irving', chartTime, positionsArray[4][2], positionsArray[4][3], 'CLE', 15]);
-      // chartData.push(['Mozgov', chartTime, positionsArray[5][2], positionsArray[5][3], 'CLE', 15]);
-      // chartData.push(['Bogut', chartTime, positionsArray[6][2], positionsArray[6][3], 'GSW', 15]);
-      // chartData.push(['Curry', chartTime, positionsArray[7][2], positionsArray[7][3], 'GSW', 15]);
-      // chartData.push(['Thompson', chartTime, positionsArray[8][2], positionsArray[8][3], 'GSW', 15]);
-      // chartData.push(['Green', chartTime, positionsArray[9][2], positionsArray[9][3], 'GSW', 15]);
-      // chartData.push(['Barnes', chartTime, positionsArray[10][2], positionsArray[10][3], 'GSW', 15]);
     }
     data.addRows(chartData);
     var chart = new google.visualization.MotionChart(document.getElementById('chart_div'));
 
     // Set the chart options
     var options = {};
-    options['state'] = '{"nonSelectedAlpha":1,"xZoomedDataMin":0,"iconType":"BUBBLE","yAxisOption":"3","xLambda":1,"orderedByY":false,"playDuration":6327.777777777781,"duration":{"multiplier":1,"timeUnit":"Y"},"yZoomedDataMax":50,"yZoomedDataMin":0,"xZoomedIn":false,"uniColorForNonSelected":false,"time":"0100","yZoomedIn":false,"yLambda":1,"showTrails":false,"dimensions":{"iconDimensions":["dim0"]},"xZoomedDataMax":94,"iconKeySettings":[{"key":{"dim0":"Bogut"}},{"key":{"dim0":"Smith"}},{"key":{"dim0":"Barnes"}},{"key":{"dim0":"Green"}},{"key":{"dim0":"Thompson"}},{"key":{"dim0":"James"}},{"key":{"dim0":"Mozgov"}},{"key":{"dim0":"Curry"}},{"key":{"dim0":"Love"}},{"key":{"dim0":"Irving"}}],"xAxisOption":"2","colorOption":"4","orderedByX":false,"sizeOption":"5"}';
+    // options['state'] = '{"nonSelectedAlpha":1,"xZoomedDataMin":0,"iconType":"BUBBLE","yAxisOption":"3","xLambda":1,"orderedByY":false,"playDuration":6327.777777777781,"duration":{"multiplier":1,"timeUnit":"Y"},"yZoomedDataMax":50,"yZoomedDataMin":0,"xZoomedIn":false,"uniColorForNonSelected":false,"time":"0100","yZoomedIn":false,"yLambda":1,"showTrails":false,"dimensions":{"iconDimensions":["dim0"]},"xZoomedDataMax":94,"iconKeySettings":[{"key":{"dim0":"Bogut"}},{"key":{"dim0":"Smith"}},{"key":{"dim0":"Barnes"}},{"key":{"dim0":"Green"}},{"key":{"dim0":"Thompson"}},{"key":{"dim0":"James"}},{"key":{"dim0":"Mozgov"}},{"key":{"dim0":"Curry"}},{"key":{"dim0":"Love"}},{"key":{"dim0":"Irving"}}],"xAxisOption":"2","colorOption":"4","orderedByX":false,"sizeOption":"5"}';
+    options['state'] = '{"yAxisOption":"3","orderedByX":false,"xZoomedDataMin":-5.29917,"iconType":"BUBBLE","xZoomedIn":false,"xLambda":1,"playDuration":40000,"duration":{"multiplier":1,"timeUnit":"Y"},"yZoomedDataMax":49.99803,"orderedByY":false,"showTrails":false,"uniColorForNonSelected":false,"time":"0100","yZoomedIn":false,"yLambda":1,"colorOption":"4","dimensions":{"iconDimensions":["dim0"]},"xZoomedDataMax":93.96206,"iconKeySettings":[{"key":{"dim0":"pos"}}],"nonSelectedAlpha":1,"yZoomedDataMin":0,"xAxisOption":"2","sizeOption":"5"}';
     options['width'] = 1000;
     options['height'] = 500;
     options['backgroundColor'] = 'transparent';
@@ -86,7 +73,7 @@ function drawChart() {
         var rawTime = JSON.parse(this.getState()).time;
         // Only display the first four digits
         var currentTime = rawTime.slice(0,4);
-        $overlay.text("Time: "+currentTime);
+        $overlay.text("Time: " + currentTime);
       }.bind(this), 100);
     }
 
