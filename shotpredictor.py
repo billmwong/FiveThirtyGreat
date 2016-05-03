@@ -55,7 +55,7 @@ def def_dist(dist):
         return "6+"
 
 def transform_web(data):
- 
+    data = data.copy()
     shot_type = pd.get_dummies(data["Shot Type"].apply(shot))
     data["Shot Dist."] = data["Shot Dist."].apply(lambda x : float(x.replace("ft.", "")))
     shot_clock = data["Shot Clock"].apply(lambda x: float(x))
@@ -67,11 +67,13 @@ def transform_web(data):
 
     
     shot_dist_c = pd.get_dummies(data["Shot Dist."].apply(shot_dist))
+    if "24+" not in shot_dist_c.columns:
+        shot_dist_c["24+"] = 0
     
     con = [shot_type, shot_clock, touch_time, drib, data["Def Dist."],def_dist_c, shot_dist_c, (data["Made?"]=="Yes").astype(int)]
     new_shot_chart = pd.concat(con , axis=1)
 
-    pred = ['16-24', '24+', '8-16', 'less than 8', 'else', 'jump', 'layup', 'Def Dist.', "Made?"]
+    pred = ['16-24', '24+', '8-16', 'less than 8', 'else', 'jump', 'layup', 'Made?']
 
     return new_shot_chart[pred]
 
@@ -85,5 +87,4 @@ def predictor(athlete, season):
     predictors = transformed_web.columns[:-1]
 
     logistic.fit(transformed_web[predictors], transformed_web["Made?"])
-    print predictors
     return logistic
