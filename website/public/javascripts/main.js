@@ -39,18 +39,18 @@ function drawChart() {
     // Loop through each moment
     // for (var i=0;i<rawData['Ball'].length;i++) {
     for (var i=0;i<1000;i++) {
-      // Get the positions of every player
-      // positionsArray = firstEventMoments[i][5];
-
       chartTime = i + 100;
       
+      // Loop through each player, push the data for each
       for (var player in rawData) {
         // Make sure this key is not from prototype
         if (rawData.hasOwnProperty(player)) {
           // Only add the data if it's not pct, pos, or radius
           if (['pct','pos','radius'].indexOf(player) === -1) {
+            // Default player radius
             var thisRadius = 15;
             if (player === 'Ball') {
+              // This is the ball, so set its radius
               thisRadius = rawData['radius'][i];
             }
             chartData.push([
@@ -83,7 +83,7 @@ function drawChart() {
 
     function onChartReady(dataTable) {
       // Check every 100 ms what time step the chart is at and update the overlay text
-      window.setInterval(function(){
+      window.setInterval(function () {
         var rawTime = JSON.parse(this.getState()).time;
         // Get rid of the extra stuff if there's a dash
         if (rawTime.indexOf('-') > -1) {
