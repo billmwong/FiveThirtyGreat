@@ -67,13 +67,14 @@ def transform_web(data):
 
     
     shot_dist_c = pd.get_dummies(data["Shot Dist."].apply(shot_dist))
-    if "24+" not in shot_dist_c.columns:
-        shot_dist_c["24+"] = 0
+    # if "24+" not in shot_dist_c.columns:
+    #     shot_dist_c["24+"] = 0
     
-    con = [shot_type, shot_clock, touch_time, drib, data["Def Dist."],def_dist_c, shot_dist_c, (data["Made?"]=="Yes").astype(int)]
+    con = [shot_type, shot_clock, data["Shot Dist."],touch_time, drib, data["Def Dist."],def_dist_c, shot_dist_c, (data["Made?"]=="Yes").astype(int)]
     new_shot_chart = pd.concat(con , axis=1)
 
-    pred = ['16-24', '24+', '8-16', 'less than 8', 'else', 'jump', 'layup', 'Made?']
+    # pred = ['16-24', '24+', '8-16', 'less than 8', 'else', 'jump', 'layup', 'Made?']
+    pred = ['Shot Dist.', 'else', 'jump', 'layup', 'Made?']
 
     return new_shot_chart[pred]
 
