@@ -85,14 +85,14 @@ def transform_big(data):
     # drib = data["Drib."].apply(lambda x: int(x))
     data["Def Dist."] = data["Def Dist."].apply(lambda x: float(x))
 
-    def_dist_c = pd.get_dummies(data["Def Dist."].apply(def_dist))
+    # def_dist_c = pd.get_dummies(data["Def Dist."].apply(def_dist))
     
     player_c = pd.get_dummies(data["Player"])
 
     shot_dist_c = pd.get_dummies(data["Shot Dist."].apply(shot_dist))
     
     con = [player_c, shot_type , data["Def Dist."],
-           def_dist_c, shot_dist_c, data["Shot Dist."],(data["Made?"]=="Yes").astype(int)]
+            shot_dist_c, data["Shot Dist."],(data["Made?"]=="Yes").astype(int)]
     
 #     con = [player_c, shot_type, shot_clock, touch_time, drib, 
 #            shot_dist_c, data["Shot Dist."],(data["Made?"]=="Yes").astype(int)]
@@ -112,51 +112,6 @@ def getDataFrame(lst):
     df_a.reset_index(drop=True, inplace =True)
     return transform_big(df_a)
 
-guards_100 = [
-    "James Harden","Damian Lillard","Chris Paul","John Wall","Eric Bledsoe","Joe Johnson","Kyrie Irving","Monta Ellis",
-     "Tyreke Evans","Ben McLemore","Ty Lawson","Goran Dragic","Stephen Curry","Kentavious Caldwell-Pope","Victor Oladipo",
-     "Jimmy Butler","Arron Afflalo","Elfrid Payton","Klay Thompson","Avery Bradley","Kyle Korver","Kyle Lowry",
-     "JJ Redick","Mario Chalmers","Courtney Lee","Gerald Henderson","Danny Green","Russell Westbrook","Trey Burke",
-     "Reggie Jackson","Evan Turner","Jarrett Jack","Jeff Teague","Mike Conley","Dion Waiters","Michael Carter-Williams",
-     "Kemba Walker","Deron Williams","Bradley Beal","DeMar DeRozan","J.R. Smith","Andre Iguodala","Brandon Knight",
-     "Wesley Matthews","Eric Gordon","Rajon Rondo","Lou Williams","Greivis Vasquez","Mo Williams","Dwyane Wade","D.J. Augustin",
-     "Tony Parker","Jeremy Lin","Zach LaVine","Aaron Brooks","Rodney Stuckey","Shane Larkin","Bojan Bogdanovic","CJ Miles",
-     "Norris Cole","Dante Exum","Marcus Smart","Anthony Morrow","Quincy Pondexter","Hollis Thompson","Alan Anderson",
-     "Patrick Beverley","Isaiah Thomas","Jerryd Bayless","Jamal Crawford","O.J. Mayo","Devin Harris","Tim Hardaway",
-     "Wayne Ellington","Evan Fournier","Tony Allen","Jason Terry","Kirk Hinrich","Manu Ginobili","Lance Stephenson",
-     "Darren Collison","Austin Rivers","Iman Shumpert","Derrick Rose","Steve Blake","Dennis Schroder","Rasual Butler",
-     "Beno Udrih","Jordan Clarkson","Shaun Livingston","Jodie Meeks","Langston Galloway","Gerald Green","Cory Joseph",
-     "Ray McCallum","CJ Watson","Tony Snell","Jameer Nelson","Marco Belinelli","Matthew Dellavedova"
-]
-
-forwards_100 = [
-    "Andrew Wiggins","Trevor Ariza","Pau Gasol","Gordon Hayward","Markieff Morris","Giannis Antetokounmpo","Kevin Love",
-    "LaMarcus Aldridge","LeBron James","Draymond Green","Wilson Chandler","Anthony Davis","Jeff Green","Thaddeus Young",
-    "Luol Deng","Rudy Gay","Paul Millsap","PJ Tucker","Solomon Hill","Nicolas Batum","Khris Middleton","Tobias Harris",
-    "Blake Griffin","Harrison Barnes","Al Horford","Nerlens Noel","Zach Randolph","Josh Smith","Dirk Nowitzki",
-    "Derrick Favors","Matt Barnes","Wesley Johnson","Tim Duncan","Tristan Thompson","DeMarre Carroll","Chandler Parsons",
-    "Patrick Patterson","Serge Ibaka","Terrence Ross","Corey Brewer","Kenneth Faried","Marcus Morris","Donatas Motiejunas",
-    "Marvin Williams","Kawhi Leonard","Jason Thompson","Boris Diaw","Amir Johnson","Robert Covington","Brandon Bass",
-    "Paul Pierce","David West","Channing Frye","Ed Davis","Mike Dunleavy","Jason Smith","Mason Plumlee",
-    "Kyle Singler","Tyler Zeller","Jared Dudley","Taj Gibson","Ryan Anderson","Joe Ingles","Luis Scola",
-    "Nikola Mirotic","Dante Cunningham","Jae Crowder","Caron Butler","Michael Kidd-Gilchrist","Jared Sullinger","Trevor Booker",
-    "Chris Bosh","Lance Thomas","Cody Zeller","Derrick Williams","Brandan Wright","Otto Porter","Anthony Tolliver",
-    "Carmelo Anthony","Danilo Gallinari","Kelly Olynyk","Omri Casspi","JJ Hickson","Tayshaun Prince","Jerami Grant",
-    "James Johnson","Al-Farouq Aminu","Kris Humphries","Ersan Ilyasova","Quincy Acy","Chase Budinger","Amar'e Stoudemire",
-    "Richard Jefferson","Kevin Seraphin","Ryan Kelly","Jonas Jerebko","John Henson","Carl Landry"
-]
-
-centers_100 = [
-    "DeAndre Jordan","Marc Gasol","Nikola Vucevic","Andre Drummond","Marcin Gortat","Tyson Chandler","Gorgui Dieng",
-    "Rudy Gobert","Greg Monroe","Enes Kanter","Brook Lopez","Jonas Valanciunas","Joakim Noah","Timofey Mozgov",
-    "DeMarcus Cousins","Al Jefferson","Omer Asik","Roy Hibbert","Jordan Hill","Steven Adams","Zaza Pachulia",
-    "Robin Lopez","Andrew Bogut","Alex Len","Henry Sims","Chris Kaman","Kosta Koufos","Spencer Hawes","Bismack Biyombo",
-    "Dwight Howard","Marreese Speights","Tarik Black","Miles Plumlee","Kendrick Perkins","Ian Mahinmi","Hassan Whiteside",
-    "Robert Sacre","Aron Baynes","Jusuf Nurkic","Cole Aldrich","Alexis Ajinca","Meyers Leonard","Dewayne Dedmon",
-    "Kyle O'Quinn","Nikola Pekovic","Justin Hamilton","Samuel Dalembert","Festus Ezeli","Ryan Hollins","Joel Anthony",
-    "Jerome Jordan","Greg Smith","Jeff Withey","JaVale McGee","Bernard James","Earl Barron","Nazr Mohammed","Clint Capela"
-]
-
 def large_model(lst):
     df_guards = getDataFrame(lst)
     
@@ -166,8 +121,4 @@ def large_model(lst):
 
     logistic.fit(df_guards[predictors], df_guards["Made?"])
     return logistic, predictors
-
-def guards_m():
-    return large_model(guards_100)
-
-# guards_m()
+    
