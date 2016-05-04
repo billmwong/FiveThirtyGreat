@@ -13,8 +13,12 @@ TEAM_DICT = {
   'pos': 'Possession'
 };
 
-var START = 2800;
-var END = 3800;
+var START = 3475;
+var END = 3835;
+// var START = 5000;
+// var END = 6000;
+// var START = 4500;
+// var END = 5000;
 
 $overlay = $('.overlay-text');
 
@@ -40,7 +44,7 @@ function drawChart() {
 
     // var firstEventMoments = rawData['events'][1]['moments'];
     // Loop through each moment
-    // for (var i=0;i<rawData['Ball'].length;i++) {
+    // for (var i=START;i<rawData['Ball'].length;i++) {
     for (var i=START;i<END;i++) {
       chartTime = i + 100;
       
@@ -98,7 +102,7 @@ function drawChart() {
         var rawPCT = rawData['pct'][currentIndex];
         var displayPCT = rawPCT.toString().slice(0,5);
 
-        $overlay.text("PCT: " + displayPCT + '%');
+        $overlay.text("PCT: " + displayPCT);
       }.bind(this), 100);
     }
 
