@@ -13,8 +13,10 @@ TEAM_DICT = {
   'pos': 'Possession'
 };
 
-var START = 3475;
-var END = 3835;
+console.log(START);
+
+// var START = 3475;
+// var END = 3835;
 // var START = 5000;
 // var END = 6000;
 // var START = 4500;
